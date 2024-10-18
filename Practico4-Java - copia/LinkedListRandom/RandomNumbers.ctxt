@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=RandomNumbers
+comment0.text=\r\n\ Provides\ methods\ for\ operating\ with\ Integer\ LinkedLists,\ that\ contains\r\n\ n\ random\ numbers,\ going\ from\ 0\ to\ n-1.\r\n\ @Francine\ Pagliasso\ Pelliciotti\ \r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=RandomNumbers()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ RandomNumbers\r\n
+comment2.params=n
+comment2.target=void\ generator(int)
+comment2.text=\r\n\ Generates\ random\ numbers\ from\ 0\ to\ n-1\ and\ adds\ each\ one\ to\r\n\ a\ LinkedList\ position.\r\n
+comment3.params=n
+comment3.target=boolean\ belongs(int)
+comment3.text=\r\n\ Checks\ if\ the\ given\ n\ number\ belongs\ to\ some\ LinkedList's\ position.\ \r\n
+comment4.params=
+comment4.target=java.util.LinkedList\ list()
+numComments=5

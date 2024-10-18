@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=BubbleSortArrayList
+comment0.text=\r\n\ Implementaci\u00F3n\ de\ BubbleSort\ para\ arraylists\ de\ Integer.\r\n\ \r\n\ Francine\ Pagliasso\ Pelliciotti\r\n\ @version\ 12/10/24\r\n
+comment1.params=
+comment1.target=BubbleSortArrayList()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BubbleSortArrayList\r\n
+comment2.params=n
+comment2.target=void\ agregar(int)
+comment3.params=i
+comment3.target=void\ eliminar(int)
+comment4.params=
+comment4.target=boolean\ listaOrdenada()
+comment5.params=
+comment5.target=java.util.ArrayList\ bubbleSort()
+numComments=6
