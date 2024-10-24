@@ -3,7 +3,6 @@ import java.util.LinkedList;
 
 public class RandomNumber {
 
-
     public static void main(String[] args){
         Random random = new Random();
         LinkedList<Integer> list = new LinkedList<>();
