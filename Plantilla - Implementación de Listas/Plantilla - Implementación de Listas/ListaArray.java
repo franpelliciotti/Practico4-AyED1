@@ -12,7 +12,7 @@ public class ListaArray<T> implements Lista<T>
     public ListaArray(int maxSize){
         this.elems = (T[]) new Object[maxSize];
         this.maxSize = maxSize;
-        this.indice = 0; //Cantidad de elementos
+        this.indice = 0; //Cantidad de elementos - donde está el último elemento.
     }
 
     public void insertarFin(T item){
@@ -22,10 +22,17 @@ public class ListaArray<T> implements Lista<T>
 
     public void insertarInicio(T elem){
         if(esVacio(elems)){
-            indice = 1;
-            elems[0] = elem;
+            elems[indice] = elem;
+            indice += 1;
         } else {
-            moverAdelante();
+            if(indice > maxSize) throw new IllegalStateException("Lista llena");
+            T aux = elems[0];
+            for(int i = 0; i < indice; i++) {
+                aux = elems[i+1];
+                elems[i + 1] = elems[i];
+            }
+            elems[0] = elem;
+            indice += 1;
         }
     }
 
