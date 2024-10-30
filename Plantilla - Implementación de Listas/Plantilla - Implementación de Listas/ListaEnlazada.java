@@ -118,6 +118,7 @@ public class ListaEnlazada<T> implements Lista<T> {
         int iteraciones = 1;
         while (actual != null) { // Mientras haya nodos en la lista
             System.out.println("Elemento en posición: " + iteraciones + ": " + actual.elem); // Imprime el elemento del nodo actual
+            iteraciones++;
             actual = actual.siguiente; // Avanza al siguiente nodo
         }
     }
