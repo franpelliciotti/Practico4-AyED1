@@ -3,7 +3,6 @@
  * Esta clase implementa el TAD Lista utilizando memoria dinámica (Nodos enlazados)
  * 
  * NOTA: existen dos versiones de listas enlazadas (con y sin ficticio). Implementar una de las dos.
- * Implementada SIN FICTICIO.
  */
 public class ListaEnlazada<T> implements Lista<T> {
     
@@ -21,7 +20,6 @@ public class ListaEnlazada<T> implements Lista<T> {
     private int indice; //se actualiza en proporción a ultimo.
 
     public ListaEnlazada(){
-        //Completar
         //this.ultimo = 0;
         this.cabeza = null; //Para listas sin ficticio
         this.ultimo = cabeza; //Para una lista vacía, el último es la cabeza, que es null.
@@ -53,33 +51,40 @@ public class ListaEnlazada<T> implements Lista<T> {
             //ultimo = nuevo.siguiente; No necesariamente es el último (?
             indice++;
         }
-        /**
-         *  if(cabeza.elem == null){ //En caso que no haya elementos
-            cabeza.elem = elem; //Guardamos el parámetro en el nodo cabeza.
-            } else {
-                cabeza.siguiente = cabeza; //El que le sigue a la cabeza, guardará el anterior para no pisarlo.
-                cabeza.elem = elem; //Actualizamos la cabeza con el elemento del parámetro.
-            } -Esto no funciona por NullPointerException.
-        */
     }
 
     public void insertarPos(T elem, int pos){
         if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("La posición debe estar entre 0 y el último elemento de la lista");
         Nodo nuevoNodo = new Nodo(elem);
+        Nodo actual = cabeza;
+        int iteraciones = 0;
+        while(actual != null){
+            iteraciones++;
+            if(iteraciones == pos){
+                nuevoNodo.siguiente = actual.siguiente;
+                actual.siguiente = nuevoNodo;
+            }
+            actual = actual.siguiente;
+        }
         indice++;
-        
         //Completar
     }
 
     public boolean eliminar(T item){
         //Completar
         Nodo actual = cabeza;
+        Nodo anterior = null;
         boolean eliminado = false;
         while(actual != null && eliminado == false){
             if(actual.elem.equals(item)){
-                //Aqui va la implementación de la eliminación
+                if (anterior == null) { //Si el anterior es null, no se puede acceder a anterior.siguiente (Ya que no existe tal objeto).
+                    cabeza = actual.siguiente;
+                } else {
+                    anterior.siguiente = actual.siguiente;
+                }
                 eliminado = true;
             }
+            anterior = actual;
             actual = actual.siguiente;
         }
         indice--; //Se actualiza el índice, ya que se eliminó un elemento.
@@ -90,7 +95,7 @@ public class ListaEnlazada<T> implements Lista<T> {
         Nodo actual = cabeza; // Comienza desde la cabeza de la lista
         boolean encontrado = false;
         int posicionEncontrado = (-1);
-        int iteraciones = 1; //iteraciones solo se modifica si se cumple la condición del while. Y si se cumple, es porque hay al menos un elemento. Por eso, inicia en uno.
+        int iteraciones = 0; 
         while (actual != null && encontrado == false) { // Mientras haya nodos en la lista
             if(actual.elem.equals(item)){
                 posicionEncontrado = iteraciones;
@@ -116,5 +121,4 @@ public class ListaEnlazada<T> implements Lista<T> {
             actual = actual.siguiente; // Avanza al siguiente nodo
         }
     }
-
 }
