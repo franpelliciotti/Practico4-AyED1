@@ -12,7 +12,7 @@ public class ListaArray<T> implements Lista<T>
     public ListaArray(int maxSize){
         this.elems = (T[]) new Object[maxSize];
         this.maxSize = maxSize;
-        this.indice = 0; //Cantidad de elementos existentes - donde está el último elemento.
+        this.indice = 0; //próximo indice libre ó cant. de elementos.
     }
 
     public void insertarFin(T item){
@@ -36,31 +36,33 @@ public class ListaArray<T> implements Lista<T>
     }
     
     public void insertarPos(T elem, int pos){
-        if(pos >= maxSize) throw new IllegalArgumentException("La posición no existe.");
-        if(pos == maxSize - 1 && elems[pos] != null) throw new IllegalStateException("La última posición está llena.");
-        if(arregloLleno()) throw new IllegalStateException("El arreglo está lleno");
+        if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("La posición no existe.");
+        if(arregloLleno()) throw new IllegalStateException("La lista está llena");
         if(esVacio(elems)){
-            indice = pos;
             elems[pos] = elem;
+            indice++;
         } else {
-            elems[pos] = elem;
-            for(int i = maxSize - 1; i >= indice && indice < maxSize; i--) {
+            for(int i = indice; i > pos; i--) {
                 elems[i] = elems[i - 1];
             }
+            elems[indice] = elem;
             indice += 1;
         }
     }
 
     public boolean eliminar(T item){
+        if(longitud() == 0) throw new IllegalStateException("La lista está vacía. No hay nada que eliminar.");
         int posicion = buscar(item);
         boolean eliminado = true;
         if(posicion == (-1)){
             eliminado = false;
         } else {
-            for(int i = maxSize - 1; i > posicion; i--) {
-                elems[i + 1] = elems[i];
+            for(int i = posicion; i < indice - 1; i++) {
+                elems[i] = elems[i + 1];
             }
+            elems[indice - 1] = null;
         }     
+        indice--;
         return eliminado;
     }
 
@@ -71,7 +73,7 @@ public class ListaArray<T> implements Lista<T>
             if(elems[i] == null){ //Para evitar problemas con comparación null
                 aux = 1;       //Para que no cambie nada que si se use, y afecte el funcionamiento. Si hay un null, por más que se haya encontrado item, si cambiamos posicionEncontrado, va a quedar con (-1)
             } else if(elems[i].equals(item)){ 
-                posicionEncontrado = (i + 1);
+                posicionEncontrado = i;
             }
         }
         return posicionEncontrado;
@@ -91,7 +93,8 @@ public class ListaArray<T> implements Lista<T>
         }
     }
     
-    private boolean esVacio(T[] arreglo){
+    /**
+     * private boolean esVacio(T[] arreglo){
         boolean esVacio = true;
         for(int i = 0; i < maxSize; i++){
             if(arreglo[i] != null){
@@ -100,8 +103,13 @@ public class ListaArray<T> implements Lista<T>
         }
         return esVacio;
     }
+     */
+    private boolean esVacio(T[] arreglo){
+        return indice == 0;
+    }
     
-    private boolean arregloLleno(){
+    /**
+     * private boolean arregloLleno(){
         boolean lleno = true;
         for(int i = 0; i < maxSize; i++){
             if(elems[i] == null){
@@ -110,32 +118,8 @@ public class ListaArray<T> implements Lista<T>
         }
         return lleno;
     }
-    
-    private boolean repOK(){ //Todavía no implementado.
-        boolean ok = true;
-        if(indice >= maxSize){
-            ok = false;
-        }
-        return ok;
-    }
-    
-    /**
-     * public void insertarInicio(T elem){
-        if(esVacio(elems)){
-            elems[indice] = elem;
-            indice += 1;
-        } else {
-            if(indice > maxSize) throw new IllegalStateException("Lista llena");
-            T aux = elems[0]; //guardara la posicion actual
-            for(int i = 0; i < indice; i++) {         
-                elems[i + 1] = aux;     
-                aux = elems[i + 1];     
-            }
-            elems[0] = elem;
-            indice += 1;
-        }
-    }
-
      */
-
+    private boolean arregloLleno(){
+        return indice == maxSize;
+    }
 }
