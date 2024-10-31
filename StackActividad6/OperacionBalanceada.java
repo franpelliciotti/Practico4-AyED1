@@ -9,19 +9,22 @@ import java.util.Stack;
 public class OperacionBalanceada
 {
     private Stack<Character> operacion;
+    private Stack<Character> parentesisApertura;
 
     /**
      * Constructor for objects of class OperacionBalanceada
      */
     public OperacionBalanceada()
     {
+        parentesisApertura = new Stack<>();
         operacion = new Stack<>();
     }
     
     public void agregar(Character caracter){
         if(caracter == null) throw new IllegalArgumentException("El caracter no puede ser nulo");
+        operacion.push(caracter);
         if((int) caracter == 40){
-            operacion.push(caracter);
+            parentesisApertura.push(caracter);
         }
     }
     
@@ -34,10 +37,10 @@ public class OperacionBalanceada
     public boolean balanceada(){
         for(Character c : operacion){ //En caso que la operación no tenga ningún paréntesis, siempre será verdadero
             if((int) c == 41){
-                operacion.pop();
+                parentesisApertura.pop();
             }
         }
-        if(operacion.empty()){
+        if(parentesisApertura.empty()){
             return true;
         }
         return false;
