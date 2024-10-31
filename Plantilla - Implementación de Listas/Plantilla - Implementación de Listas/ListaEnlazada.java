@@ -122,4 +122,17 @@ public class ListaEnlazada<T> implements Lista<T> {
             actual = actual.siguiente; // Avanza al siguiente nodo
         }
     }
+
+    public boolean esVacia(){
+        return longitud() == 0;
+    }
+
+    public T buscarPorPosicion(int pos){
+        Nodo actual = cabeza();
+        int posicionEncontrado = 0;
+        boolean encontrado = false;
+        while(actual != null && encontrado == false){
+            
+        }
+    }
 }

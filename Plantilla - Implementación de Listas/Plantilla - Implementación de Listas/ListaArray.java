@@ -36,7 +36,7 @@ public class ListaArray<T> implements Lista<T>
     }
     
     public void insertarPos(T elem, int pos){
-        if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("La posición no existe.");
+        if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("Posición inválida.");
         if(arregloLleno()) throw new IllegalStateException("La lista está llena");
         if(esVacio(elems)){
             elems[pos] = elem;
@@ -93,33 +93,16 @@ public class ListaArray<T> implements Lista<T>
         }
     }
     
-    /**
-     * private boolean esVacio(T[] arreglo){
-        boolean esVacio = true;
-        for(int i = 0; i < maxSize; i++){
-            if(arreglo[i] != null){
-                esVacio = false;
-            }
-        }
-        return esVacio;
+    public boolean esVacia(){
+        return longitud() == 0;
     }
-     */
-    private boolean esVacio(T[] arreglo){
-        return indice == 0;
+
+    public T buscarPorPosicion(int pos){
+        if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("Posición inválida.");
+        return elems[pos];
     }
-    
-    /**
-     * private boolean arregloLleno(){
-        boolean lleno = true;
-        for(int i = 0; i < maxSize; i++){
-            if(elems[i] == null){
-                lleno = false;
-            }
-        }
-        return lleno;
-    }
-     */
+
     private boolean arregloLleno(){
-        return indice == maxSize;
+        return longitud() == maxSize;
     }
 }

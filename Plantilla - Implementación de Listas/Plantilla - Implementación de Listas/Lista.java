@@ -50,4 +50,20 @@ public interface Lista <T> {
      * Imprime por pantalla los elementos de la lista.
      */
     public void imprimir();
+
+    /**
+     * AGREGADO.
+     * Retorna si la lista está vacía o no.
+     * @return true si la lista es vacía, false en caso contrario.
+     */
+    public boolean esVacia();
+
+    /**
+     * AGREGADO.
+     * Retorna el elemento que está en la posición deseada.
+     * @param posicion Posicion a observar. 
+     * @return elemento T en posicion a observar.
+     * @pre 0 <= pos <= longitud().
+     */
+    public T buscarPorPosicion(int pos)
 }
