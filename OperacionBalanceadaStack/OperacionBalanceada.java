@@ -3,8 +3,8 @@ import java.util.Stack;
 /**
  * Write a description of class OperacionBalanceada here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Francine Pagliasso Pelliciotti 
+ * @version 31/11/24
  */
 public class OperacionBalanceada
 {
@@ -20,7 +20,9 @@ public class OperacionBalanceada
     
     public void agregar(Character caracter){
         if(caracter == null) throw new IllegalArgumentException("El caracter no puede ser nulo");
-        operacion.push(caracter);
+        if((int) caracter == 40 || (int) caracter == 41){
+            operacion.push(caracter);
+        }
     }
     
     public void imprimir(){
@@ -28,13 +30,16 @@ public class OperacionBalanceada
             System.out.println(c);
         }
     }
-    
+
     public boolean balanceada(){
         for(Character c : operacion){ //En caso que la operación no tenga ningún paréntesis, siempre será verdadero
-            if((int) c != 40 && (int) c != 41){
-                return true;
+            if((int) c == 41){
+                operacion.pop();
             }
         }
-        return true;
+        if(operacion.empty()){
+            return true;
+        }
+        return false;
     }
 }
