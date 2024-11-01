@@ -65,5 +65,5 @@ public interface Lista <T> {
      * @return elemento T en posicion a observar.
      * @pre 0 <= pos <= longitud().
      */
-    public T buscarPorPosicion(int pos)
+    public T buscarPorPosicion(int pos);
 }
