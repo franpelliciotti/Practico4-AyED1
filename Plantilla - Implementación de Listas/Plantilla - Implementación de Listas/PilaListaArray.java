@@ -2,22 +2,18 @@
 public class PilaListaArray<T> implements Pila<T>{
     
     private ListaArray<T> pila;
-    private int cantidadElementos;
 
     public PilaListaArray(int maxSize){
         pila = new ListaArray<>(maxSize);
-        cantidadElementos = 0;
     }
 
     public void apilar(T item){
         pila.insertarInicio(item);
-        cantidadElementos++;
     }
 
     public void desapilar(){
         if(pila.esVacia()) throw new IllegalStateException("La pila está vacía. No hay nada que desapilar.");
         pila.eliminar(tope());
-        cantidadElementos--;
     }
 
     public T tope(){
@@ -29,5 +25,9 @@ public class PilaListaArray<T> implements Pila<T>{
     }
 
     public void vaciar(){
+        if(pila.esVacia()) throw new IllegalStateException("La pila ya está vacía.");
+        for(int i = 0; i < pila.longitud(); i++){
+            pila.eliminar(pila.buscarPorPosicion(i));
+        }
     }
 }

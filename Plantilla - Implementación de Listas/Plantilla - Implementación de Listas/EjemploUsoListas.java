@@ -28,24 +28,28 @@ public class EjemploUsoListas {
         System.out.println("Longitud de ambas listas: ");
         System.out.println(listaConArray.longitud());
         System.out.println(listaEnlazada.longitud());
-        
+        //Resultado esperado: 6.
+
         System.out.println();
         
         System.out.println("Mostrando la lista implementada sobre arreglos:");
         listaConArray.imprimir();
-
+        //Resultado esperado: [2, 3, 8, 4, 43, 32]
         System.out.println("------------------------------------------");
         
         System.out.println("Mostrando la lista implementada con Nodos:");
         listaEnlazada.imprimir();
+        //Resultado esperado: [2, 3, 8, 4, 43, 32]
 
         System.out.println();
         
         System.out.println("Buscar el elemento 3 en la lista implementada sobre arreglos");
         System.out.println(listaConArray.buscar(3));
+        //Resultado esperado: 1.
         
         System.out.println("Buscar el elemento 3 en la lista implementada con Nodos");
         System.out.println(listaEnlazada.buscar(3));
+        //Resultado esperado: 1.
         
         System.out.println();
         
@@ -53,6 +57,7 @@ public class EjemploUsoListas {
         System.out.println(listaConArray.eliminar(43));
         listaConArray.eliminar(43);
         listaConArray.imprimir();
+        //Resultado esperado: true, [2, 3, 8, 4, 32].
         
         System.out.println("------------------------------------------");
         
@@ -60,5 +65,22 @@ public class EjemploUsoListas {
         System.out.println(listaEnlazada.eliminar(43));
         listaEnlazada.eliminar(43);
         listaEnlazada.imprimir();
+        //Resultado esperado: true, [2, 3, 8, 4, 32].
+
+        System.out.println();
+        
+        System.out.println("Eliminar el elemento 78 en la lista implementada sobre arreglos");
+        System.out.println(listaConArray.eliminar(78));
+        listaConArray.eliminar(78);
+        listaConArray.imprimir();
+        //Resultado esperado: false, [2, 3, 8, 4, 32].
+        
+        System.out.println("------------------------------------------");
+        
+        System.out.println("Eliminar el elemento 78 en la lista implementada con Nodos");
+        System.out.println(listaEnlazada.eliminar(78));
+        listaEnlazada.eliminar(78);
+        listaEnlazada.imprimir();
+        //Resultado esperado: false, [2, 3, 8, 4, 32].
     }
 }
