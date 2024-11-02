@@ -29,8 +29,5 @@ public class PilaListaArray<T> implements Pila<T>{
     }
 
     public void vaciar(){
-        for(T elemento : pila){ //No es iterable
-            pila.eliminar(elemento);
-        }
     }
 }

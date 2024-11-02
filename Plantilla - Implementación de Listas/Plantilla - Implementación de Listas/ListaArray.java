@@ -22,7 +22,7 @@ public class ListaArray<T> implements Lista<T>
     }
 
     public void insertarInicio(T elem){
-        if(esVacio(elems)){
+        if(esVacia()){
             elems[indice] = elem;
             indice += 1;
         } else {
@@ -38,14 +38,14 @@ public class ListaArray<T> implements Lista<T>
     public void insertarPos(T elem, int pos){
         if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("Posición inválida.");
         if(arregloLleno()) throw new IllegalStateException("La lista está llena");
-        if(esVacio(elems)){
+        if(esVacia()){
             elems[pos] = elem;
             indice++;
         } else {
             for(int i = indice; i > pos; i--) {
                 elems[i] = elems[i - 1];
             }
-            elems[indice] = elem;
+            elems[pos] = elem;
             indice += 1;
         }
     }
@@ -60,15 +60,16 @@ public class ListaArray<T> implements Lista<T>
             for(int i = posicion; i < indice - 1; i++) {
                 elems[i] = elems[i + 1];
             }
-            elems[indice - 1] = null;
+            elems[indice - 1] = null; 
+            indice--; //El error era porque se estaba restando el índice fuera del condicional else. O sea, que si no se encontraba, también se restaba.
         }     
-        indice--;
         return eliminado;
     }
 
     public int buscar(T item){
         int posicionEncontrado = (-1);
-        for(int i = 0; i < maxSize; i++){
+        for(int i = 0; i < longitud(); i++){ //Cambiado maxSize por longitud() (Para evitar iteraciones innecesarias).
+            @SuppressWarnings("unused") //Warning: aux no está siendo usado (Cuando en realidad si).
             int aux = 0;
             if(elems[i] == null){ //Para evitar problemas con comparación null
                 aux = 1;       //Para que no cambie nada que si se use, y afecte el funcionamiento. Si hay un null, por más que se haya encontrado item, si cambiamos posicionEncontrado, va a quedar con (-1)
@@ -84,10 +85,10 @@ public class ListaArray<T> implements Lista<T>
     }
 
     public void imprimir(){
-        if(esVacio(elems)){
+        if(esVacia()){
             System.out.println("La lista está vacía.");
         } else {
-            for(int i = 0; i < maxSize; i++){
+            for(int i = 0; i < longitud(); i++){
                 System.out.println("Elemento en posición " + (i + 1) + ": " + elems[i]);
             }
         }

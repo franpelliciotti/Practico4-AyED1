@@ -128,11 +128,14 @@ public class ListaEnlazada<T> implements Lista<T> {
     }
 
     public T buscarPorPosicion(int pos){
-        Nodo actual = cabeza();
-        int posicionEncontrado = 0;
-        boolean encontrado = false;
-        while(actual != null && encontrado == false){
-            
+        if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("Posición inválida.");
+        Nodo actual = cabeza;
+        while(actual != null){
+            if(buscar(actual.elem) == pos){
+                return actual.elem;
+            }
+            actual = actual.siguiente;
         }
+        return null;
     }
 }
