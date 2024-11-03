@@ -28,4 +28,17 @@ public interface Pila<T> {
      * @pos la longitud de la pila debe ser == 0.
      */
     public void vaciar();
+
+    /**
+     * AGREGADO
+     * Imprime cada objeto de la pila, empezando por el tope, y terminando en el primer elemento agregado.
+     */
+    public void imprimir();
+
+    /**
+     * AGREGADO 
+     * Devuelve la cantidad de elementos actual de la pila.
+     * @return la longitud actual de la lista.
+     */
+    public int longitud();
 }

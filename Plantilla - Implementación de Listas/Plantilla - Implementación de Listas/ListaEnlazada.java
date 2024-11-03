@@ -83,11 +83,11 @@ public class ListaEnlazada<T> implements Lista<T> {
                     anterior.siguiente = actual.siguiente;
                 }
                 eliminado = true;
+                indice--; //Se actualiza el índice, ya que se eliminó un elemento.
             }
             anterior = actual;
             actual = actual.siguiente;
         }
-        indice--; //Se actualiza el índice, ya que se eliminó un elemento.
         return eliminado;
     }
 

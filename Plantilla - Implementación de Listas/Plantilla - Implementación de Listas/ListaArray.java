@@ -16,12 +16,14 @@ public class ListaArray<T> implements Lista<T>
     }
 
     public void insertarFin(T item){
+        if(item == null) throw new IllegalArgumentException("Elemento nulo."); //Fortalecimiento de precondición.
         if(indice >= maxSize) throw new IllegalStateException("Lista llena");
         elems[indice] = item;
         indice += 1;
     }
 
     public void insertarInicio(T elem){
+        if(elem == null) throw new IllegalArgumentException("Elemento nulo."); //Fortalecimiento de precondición.
         if(esVacia()){
             elems[indice] = elem;
             indice += 1;
@@ -36,6 +38,7 @@ public class ListaArray<T> implements Lista<T>
     }
     
     public void insertarPos(T elem, int pos){
+        if(elem == null) throw new IllegalArgumentException("Elemento nulo."); //Fortalecimiento de precondición.
         if(pos < 0 || pos > longitud()) throw new IllegalArgumentException("Posición inválida.");
         if(arregloLleno()) throw new IllegalStateException("La lista está llena");
         if(esVacia()){
@@ -69,11 +72,7 @@ public class ListaArray<T> implements Lista<T>
     public int buscar(T item){
         int posicionEncontrado = (-1);
         for(int i = 0; i < longitud(); i++){ //Cambiado maxSize por longitud() (Para evitar iteraciones innecesarias).
-            @SuppressWarnings("unused") //Warning: aux no está siendo usado (Cuando en realidad si).
-            int aux = 0;
-            if(elems[i] == null){ //Para evitar problemas con comparación null
-                aux = 1;       //Para que no cambie nada que si se use, y afecte el funcionamiento. Si hay un null, por más que se haya encontrado item, si cambiamos posicionEncontrado, va a quedar con (-1)
-            } else if(elems[i].equals(item)){ 
+            if(elems[i].equals(item)){  //Cambio de la opción null, ya que se fortaleció la precondición en cada método para insertar nuevos elementos: No pueden ser null.
                 posicionEncontrado = i;
             }
         }

@@ -68,6 +68,12 @@ public class EjemploUsoListas {
         //Resultado esperado: true, [2, 3, 8, 4, 32].
 
         System.out.println();
+        System.out.println("Longitud de ambas listas: ");
+        System.out.println(listaConArray.longitud());
+        System.out.println(listaEnlazada.longitud());
+        //Resultado esperado: 5.
+
+        System.out.println();
         
         System.out.println("Eliminar el elemento 78 en la lista implementada sobre arreglos");
         System.out.println(listaConArray.eliminar(78));
@@ -82,5 +88,11 @@ public class EjemploUsoListas {
         listaEnlazada.eliminar(78);
         listaEnlazada.imprimir();
         //Resultado esperado: false, [2, 3, 8, 4, 32].
+
+        System.out.println();
+        System.out.println("Longitud de ambas listas: ");
+        System.out.println(listaConArray.longitud());
+        System.out.println(listaEnlazada.longitud());
+        //Resultado esperado: 5.
     }
 }
