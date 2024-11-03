@@ -26,13 +26,20 @@ public class PilaListaEnlazada<T> implements Pila<T> {
 
     public void vaciar(){
         if(pila.esVacia()) throw new IllegalStateException("La pila ya está vacía.");
-        for(int i = 0; i < pila.longitud(); i++){
-            pila.eliminar(pila.buscarPorPosicion(i));
+        int longitudInicio = pila.longitud(); 
+        for(int i = 0; i < longitudInicio; i++){
+            desapilar();
         }
     }
 
     public void imprimir(){
-        pila.imprimir();
+        if(pila.esVacia()){
+            System.out.println("La pila está vacía.");
+        } else {
+            for(int i = 0; i < pila.longitud(); i++){
+                System.out.println("[" + pila.buscarPorPosicion(i) + "]");
+            }
+        }
     }
 
     public int longitud(){
