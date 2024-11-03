@@ -27,7 +27,8 @@ public class PilaListaArray<T> implements Pila<T>{
 
     public void vaciar(){
         if(pila.esVacia()) throw new IllegalStateException("La pila ya está vacía.");
-        for(int i = 0; i < pila.longitud(); i++){
+        int longitudInicio = pila.longitud();
+        for(int i = 0; i < longitudInicio; i++){ //El problema era que había puesto i < pila.longitud como condición. Y pila.longitud(), se iba actualizando.
             desapilar();
         }
     }
