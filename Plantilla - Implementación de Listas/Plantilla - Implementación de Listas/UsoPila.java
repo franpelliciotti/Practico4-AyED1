@@ -53,11 +53,11 @@ public class UsoPila {
         System.out.println("Tope Pila Enlazada: " + pilaEnlazada.tope());
         System.out.println();
 
-        System.out.println("Vaciar pilas:");
+        System.out.println("Vaciar pilas");
         vaciarPila();
         pilaArray.imprimir();
-        System.out.println();
         pilaEnlazada.imprimir();
+        System.out.println();
         System.out.println("Longitud Pila Array: " + pilaArray.longitud());
         System.out.println("Longitud Pila Enlazada: " + pilaEnlazada.longitud());
     }

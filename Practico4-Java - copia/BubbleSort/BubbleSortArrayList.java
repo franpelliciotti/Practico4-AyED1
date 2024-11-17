@@ -37,7 +37,7 @@ public class BubbleSortArrayList
         return ordenada;
     }
     
-    public ArrayList bubbleSort(){
+    public ArrayList<Integer> bubbleSort(){
         int menor = 0;
         int mayor = 0;
         for(int i = 0; i < listaEnteros.size() && !(listaOrdenada()); i++){

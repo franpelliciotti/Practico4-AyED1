@@ -38,4 +38,8 @@ public class ColaArray<T> implements Cola<T>{
         }
         System.out.print("]");
     }
+
+    public int longitud(){
+        return cola.longitud();
+    }
 }

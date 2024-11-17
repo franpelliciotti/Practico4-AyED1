@@ -46,7 +46,7 @@ public class RandomNumbers
         return isThere;
     }
     
-    public LinkedList list(){
+    public LinkedList<Integer> list(){
         return numberList;
     }
 }

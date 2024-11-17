@@ -20,7 +20,6 @@ public class ListaEnlazada<T> implements Lista<T> {
     private int indice; //se actualiza en proporción a ultimo.
 
     public ListaEnlazada(){
-        //this.ultimo = 0;
         this.cabeza = null; //Para listas sin ficticio
         this.ultimo = cabeza; //Para una lista vacía, el último es la cabeza, que es null.
         // this.cabeza = new Nodo(null) # Para listas con ficticio
@@ -58,15 +57,20 @@ public class ListaEnlazada<T> implements Lista<T> {
         Nodo nuevoNodo = new Nodo(elem);
         Nodo actual = cabeza;
         int iteraciones = 0;
-        while(actual != null){
-            iteraciones++;
-            if(iteraciones == pos){
-                nuevoNodo.siguiente = actual.siguiente;
-                actual.siguiente = nuevoNodo;
+        if(pos == 0){
+            insertarInicio(elem);
+        } else {
+            while(actual != null){
+                iteraciones++;
+                if(iteraciones == pos){
+                    nuevoNodo.siguiente = actual.siguiente;
+                    actual.siguiente = nuevoNodo;
+                }
+                actual = actual.siguiente;
             }
-            actual = actual.siguiente;
+            indice++;
         }
-        indice++;
+        
         //Completar
     }
 
