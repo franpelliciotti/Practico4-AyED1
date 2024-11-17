@@ -23,8 +23,8 @@ public class ColaCircular<T>{
             ultimo++;
             longitud++;
         } else {
-            cola[longitud() % longMax - 1] = elem;
-            ultimo = (ultimo() % longMax - 1) + 1;
+            cola[((ultimo() % longMax) + 1) % longMax] = elem;
+            ultimo = ((ultimo() % longMax) + 1) % longMax;
             longitud++;
         }
     }
@@ -37,7 +37,7 @@ public class ColaCircular<T>{
             primero = -1;
             ultimo = -1;
         } else {
-            primero = (primero() % longMax - 1) + 1;
+            primero = (primero() % longMax) + 1;
         }
     }
 
@@ -59,5 +59,15 @@ public class ColaCircular<T>{
 
     public int ultimo(){
         return ultimo;
+    }
+
+    public void imprimir(){
+        for(int i = 0; i < longMax; i++){
+            System.out.print(cola[i] + " ");
+            System.out.println();
+        }
+        System.out.print("  - Primero: " + primero());
+        System.out.print("  - Último: " + ultimo());
+        System.out.println();
     }
 }
